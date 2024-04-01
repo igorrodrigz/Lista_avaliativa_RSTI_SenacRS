@@ -1,0 +1,46 @@
+#O primeiro módulo extra deverá permitir a
+#inserção de áreas menores ao cálculo final de um terreno, assim, caso o
+#terreno seja desigual para a construção, basta medir todas as partes e
+#adicionar suas larguras e alturas uma a uma. Para o segundo módulo
+#identificou-se diversos erros por parte dos usuários na inserção dos dados e o
+#sistema não possui forma de excluir valores, forneça essa possibilidade
+#levando em conta o módulo adicional um.
+print("Bem vindo ao Calculador de Terrenos 4.0 da Energon")
+print(20*"~~")
+
+def calcularArea(comprimento, largura, *areas_menores):
+    area_total = comprimento * largura
+    for area in areas_menores:
+        area_total += area
+    return area_total
+
+def excluir(areas_menores):
+    if areas_menores:
+        del areas_menores[int(input("Digite o índice do terreno que deseja excluir"))]
+        print("Terrenos menores removidos com sucesso.")
+        print(areaFinal)
+    else:
+        print("Não há mais terrenos para excluir.")
+
+def main():
+    comprimento_terreno = float(input("Digite o comprimento do terreno em metros: "))
+    largura_terreno = float(input("Digite a largura do terreno em metros: "))
+
+    areas_menores = []
+    while input("""
+    Deseja adicionar uma área menor?
+    [s] para Sim
+    [n] para Não
+    """) == "s":
+        areas_menores.append(float(input("Digite a área menor a ser adicionada em metros quadrados")))
+
+    areaFinal = calcularArea(comprimento_terreno, largura_terreno, *areas_menores)
+    print(f"A área total para instalação das placas solares é de {areaFinal} metros quadrados.")
+
+    if areas_menores and input("""Deseja excluir alguma área menor?
+    [s] para Sim
+    [n] para Não
+    """) == "s":
+        excluir(areas_menores)
+        
+main()
