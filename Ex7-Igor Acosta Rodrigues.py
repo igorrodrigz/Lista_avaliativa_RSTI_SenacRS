@@ -30,11 +30,6 @@ else:
 
 print(20*"~~")
 
-#Variavel modificadora
-modificador = input("""\nDeseja adicionar um Modificador para o número sorteado?
-[sair] Digite -1 para encerrar o programa
-[Jogar novamente] Digite o numero que deseja acrescentar ou subtrair sortear: 
-""")
 
 #Soma o modificador + Aleatorio
 while True:
@@ -42,14 +37,16 @@ while True:
         modificador = int(input("""
 Deseja adicionar um Modificador para o número sorteado?
 [sair] Digite -1 para encerrar o programa
-[Jogar novamente] Digite o número que deseja acrescentar ou subtrair ao sorteio: """))
+[Jogar novamente] Digite o número que deseja acrescentar ao sorteio: """))
 
         if modificador == -1:
             print("Encerrando o programa. Obrigado por jogar!")
             break
         else:
-            NumeroAleatorio += modificador
-            print(f"O número sorteado, com o modificador, é {NumeroAleatorio}!")
+            # Gerando um novo numero de (1 a 20)
+            NumeroAleatorioNovo = random.randint(1, 20)
+            NumeroAleatorioNovoModificado = NumeroAleatorioNovo + modificador
+            print(f"O número sorteado {NumeroAleatorioNovo}, com o modificador, é {NumeroAleatorioNovoModificado}!")
     except ValueError:
         print("Entrada inválida. Por favor, digite um número inteiro ou -1 para sair.")
 
